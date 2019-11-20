@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB631492384B9F40035E844 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB631482384B9F40035E844 /* item.swift */; };
 		2FC25485234E65660068B012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC25484234E65660068B012 /* AppDelegate.swift */; };
 		2FC25487234E65660068B012 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC25486234E65660068B012 /* SceneDelegate.swift */; };
 		2FC25489234E65660068B012 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC25488234E65660068B012 /* TodoListViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FB631482384B9F40035E844 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		2FC25481234E65660068B012 /* Hourglass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourglass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC25484234E65660068B012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC25486234E65660068B012 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FB631442384B87E0035E844 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2FC25488234E65660068B012 /* TodoListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2FB631452384B8BD0035E844 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2FC2548A234E65660068B012 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2FB631472384B97A0035E844 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB631482384B9F40035E844 /* item.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		2FB6314A238520B80035E844 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2FC25478234E65660068B012 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +132,12 @@
 		2FC25483234E65660068B012 /* Hourglass */ = {
 			isa = PBXGroup;
 			children = (
+				2FB6314A238520B80035E844 /* Supporting Files */,
+				2FB631472384B97A0035E844 /* Data Model */,
 				2FC25484234E65660068B012 /* AppDelegate.swift */,
 				2FC25486234E65660068B012 /* SceneDelegate.swift */,
-				2FC25488234E65660068B012 /* TodoListViewController.swift */,
-				2FC2548A234E65660068B012 /* Main.storyboard */,
+				2FB631442384B87E0035E844 /* Controllers */,
+				2FB631452384B8BD0035E844 /* Views */,
 				2FC2548D234E656A0068B012 /* Assets.xcassets */,
 				2FC2548F234E656A0068B012 /* LaunchScreen.storyboard */,
 				2FC25492234E656A0068B012 /* Info.plist */,
@@ -259,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB631492384B9F40035E844 /* item.swift in Sources */,
 				2FC25489234E65660068B012 /* TodoListViewController.swift in Sources */,
 				2FC25485234E65660068B012 /* AppDelegate.swift in Sources */,
 				2FC25487234E65660068B012 /* SceneDelegate.swift in Sources */,
