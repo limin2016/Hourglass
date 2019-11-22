@@ -7,43 +7,24 @@
 //
 
 import UIKit
+import CoreData
+
 //At the begining, viewDidLoad+number times numberOfRowsInSection + number times cellForRowAt indexPath
 //tableView.reloadData(): one time numberOfRowsInSection + number times cellForRowAt indexPath
 class TodoListViewController: UITableViewController {
  
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var itemArray = [Item]()
-//    var itemArray=["Find Milk", "Buy eggs", "Buy Fruits"]
-    //let defaults = UserDefaults.standard
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataFilePath)
-        let newItem = Item()
-        newItem.title = "Find Milk"
-        itemArray.append(newItem)
-        
-        let newItem2 = Item()
-        newItem2.title = "Buy Eggs"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "Buy Fruits"
-        itemArray.append(newItem3)
-        
-         
-        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        loadItems()
         // Do any additional setup after loading the view.
         
-        
-//        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
-//            itemArray = items
-//        }
-        print("viewDidLoad")
     }
     
     //MARK Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("number of row ",itemArray.count)
         return itemArray.count
     }
     
@@ -62,14 +43,19 @@ class TodoListViewController: UITableViewController {
     //MARK - TabelView Delegate Methods
     //When user click the row, what happens
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(itemArray[indexPath.row].title)
-
+        print(itemArray[indexPath.row].title!)
+        //need frist delete the items from coredata because we in the second code, we use the indexPath.row
+//        self.context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
+        
+        //itemArray[indexPath.row].setValue("hello", forKey: "title")
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
+
     //MARK - add new item
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -79,15 +65,11 @@ class TodoListViewController: UITableViewController {
         //when you click "Add Item", what happens
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             if textField.text != "" {
-                
-                let newItem = Item()
+                let newItem = Item(context: self.context)
                 newItem.title = textField.text!
+                newItem.done = false
                 self.itemArray.append(newItem)
                 self.saveItems()
-                
-                
-                //self.defaults.set(self.itemArray, forKey: "TodoListArray")
-                
             }
             
         }
@@ -104,14 +86,21 @@ class TodoListViewController: UITableViewController {
     }
     
     func saveItems() {
-        let encoder = PropertyListEncoder()
         do {
-            let data = try encoder.encode(itemArray)
-            try data.write(to: dataFilePath!)
+            try self.context.save()
         } catch {
-            print("Error encoding item array, \(error)")
+            print("Error saving message, \(error)")
         }
         self.tableView.reloadData()
+    }
+    
+    func loadItems() {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do{
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from contex, \(error)")
+        }
     }
 }
 
