@@ -1,0 +1,6 @@
+framework module Pods_Hourglass_HourglassUITests {
+  umbrella header "Pods-Hourglass-HourglassUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
