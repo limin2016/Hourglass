@@ -10,6 +10,7 @@
 		2FB6318E238A02020035E844 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6318D238A02020035E844 /* CategoryTableViewController.swift */; };
 		2FB63192238B3BC40035E844 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB63191238B3BC40035E844 /* Item.swift */; };
 		2FB63194238B3BDA0035E844 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB63193238B3BDA0035E844 /* Category.swift */; };
+		2FB63196238B96770035E844 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB63195238B96770035E844 /* SwipeTableViewController.swift */; };
 		2FC25485234E65660068B012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC25484234E65660068B012 /* AppDelegate.swift */; };
 		2FC25487234E65660068B012 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC25486234E65660068B012 /* SceneDelegate.swift */; };
 		2FC25489234E65660068B012 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC25488234E65660068B012 /* TodoListViewController.swift */; };
@@ -47,6 +48,7 @@
 		2FB6318D238A02020035E844 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		2FB63191238B3BC40035E844 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2FB63193238B3BDA0035E844 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		2FB63195238B96770035E844 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		2FC25481234E65660068B012 /* Hourglass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourglass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC25484234E65660068B012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FC25486234E65660068B012 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				2FB6318D238A02020035E844 /* CategoryTableViewController.swift */,
 				2FC25488234E65660068B012 /* TodoListViewController.swift */,
+				2FB63195238B96770035E844 /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -114,13 +117,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		2FB631472384B97A0035E844 /* Data Model */ = {
+		2FB631472384B97A0035E844 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
 				2FB63191238B3BC40035E844 /* Item.swift */,
 				2FB63193238B3BDA0035E844 /* Category.swift */,
 			);
-			path = "Data Model";
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		2FB6314A238520B80035E844 /* Supporting Files */ = {
@@ -156,7 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB6314A238520B80035E844 /* Supporting Files */,
-				2FB631472384B97A0035E844 /* Data Model */,
+				2FB631472384B97A0035E844 /* DataModel */,
 				2FC25484234E65660068B012 /* AppDelegate.swift */,
 				2FC25486234E65660068B012 /* SceneDelegate.swift */,
 				2FB631442384B87E0035E844 /* Controllers */,
@@ -451,6 +454,7 @@
 				2FC25489234E65660068B012 /* TodoListViewController.swift in Sources */,
 				2FB6318E238A02020035E844 /* CategoryTableViewController.swift in Sources */,
 				2FC25485234E65660068B012 /* AppDelegate.swift in Sources */,
+				2FB63196238B96770035E844 /* SwipeTableViewController.swift in Sources */,
 				2FB63192238B3BC40035E844 /* Item.swift in Sources */,
 				2FC25487234E65660068B012 /* SceneDelegate.swift in Sources */,
 				2FB63194238B3BDA0035E844 /* Category.swift in Sources */,

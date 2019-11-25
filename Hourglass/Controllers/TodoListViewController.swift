@@ -12,7 +12,7 @@ import RealmSwift
 
 //At the begining, viewDidLoad+number times numberOfRowsInSection + number times cellForRowAt indexPath
 //tableView.reloadData(): one time numberOfRowsInSection + number times cellForRowAt indexPath
-class TodoListViewController: UITableViewController{
+class TodoListViewController: SwipeTableViewController{
     
     let realm = try! Realm()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -24,6 +24,7 @@ class TodoListViewController: UITableViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 65.0
         //print(File Manager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
@@ -35,10 +36,10 @@ class TodoListViewController: UITableViewController{
     //each item will load only one time at the begining
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = UITableViewCell(style: .default, reuseIdentifier: "toDoListCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         if let item = todoLtems?[indexPath.row] {
             cell.textLabel?.text = item.title
-        
             //ternary operator
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
@@ -59,20 +60,27 @@ class TodoListViewController: UITableViewController{
                 print("Error saving done status, \(error)")
             }
         }
-        //print(todoLtems[indexPath.row].title!)
-        //need frist delete the items from coredata because we in the second code, we use the indexPath.row
-//        self.context.delete(todoLtems[indexPath.row])
-//        todoLtems.remove(at: indexPath.row)
         
-        //todoLtems[indexPath.row].setValue("hello", forKey: "title")
-//        todoLtems[indexPath.row].done = !todoLtems[indexPath.row].done
-//        saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
         self.tableView.reloadData()
     }
     
     
 
+    //MARK: - Delte data from swipe
+    override func deleteModel(at indexPath: IndexPath) {
+        if let itemForDeletion = self.todoLtems?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(itemForDeletion)
+            }
+                } catch {
+                    print("Error deleting category, \(error)")
+                }
+                //tableView.reloadData()
+        }
+    }
+    
     //MARK: - add new item
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -87,6 +95,7 @@ class TodoListViewController: UITableViewController{
                             let newItem = Item()
                             newItem.title = textField.text!
                             newItem.done = false
+                            newItem.dateCreated = Date()
                             currentCategory.items.append(newItem)
                         }
                     } catch {
@@ -108,15 +117,7 @@ class TodoListViewController: UITableViewController{
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    // MARK: - TableView 
-//    func saveItems() {
-////        do {
-////            try self.context.save()
-////        } catch {
-////            print("Error saving message, \(error)")
-////        }
-//        self.tableView.reloadData()
-//    }
+
     
     func loadItems() {
         todoLtems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
@@ -126,7 +127,7 @@ class TodoListViewController: UITableViewController{
 
 extension TodoListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        todoLtems = todoLtems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
+        todoLtems = todoLtems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         self.tableView.reloadData()
         
     }

@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 import RealmSwift
-
-class CategoryTableViewController: UITableViewController {
+ 
+class CategoryTableViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
@@ -19,22 +19,18 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
+        tableView.rowHeight = 65.0
     }
 
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories?.count ?? 1
-    }
+    } 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: "CategoryCell")
-//        let category = categories[indexPath.row]
-//        cell.textLabel?.text = category.name
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        //cell.textLabel?.text = categories[indexPath.row].name   use this code will throw wrong message. Don't know why.
-        //let item = categories[indexPath.row]
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! SwipeTableViewCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No categories addded yet!"
-        //cell.textLabel?.text = item?.name ?? "No categories added yet!"
         return cell
     }
     
@@ -61,7 +57,7 @@ class CategoryTableViewController: UITableViewController {
             print("Error saving message, \(error)")
         }
         self.tableView.reloadData()
-    }
+     }
     
     func loadCategories() {
         categories = realm.objects(Category.self)
@@ -73,8 +69,21 @@ class CategoryTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    //MARK: - Add New Categories
+    //MARK: - Delte data from swipe
+    override func deleteModel(at indexPath: IndexPath) {
+        if let categoryForDeletion = self.categories?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(categoryForDeletion)
+            }
+                } catch {
+                    print("Error deleting category, \(error)")
+                }
+                //tableView.reloadData()
+        }
+    }
     
+    //MARK: - Add New Categories
         @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
             var textField = UITextField()
             let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
@@ -99,3 +108,4 @@ class CategoryTableViewController: UITableViewController {
             present(alert, animated: true, completion: nil)
     }
 }
+

@@ -14,4 +14,5 @@ target 'Hourglass' do
     # Pods for testing
   end
 pod 'RealmSwift'
+pod 'SwipeCellKit' 
 end
