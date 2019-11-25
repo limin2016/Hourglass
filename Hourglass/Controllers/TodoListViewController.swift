@@ -27,7 +27,6 @@ class TodoListViewController: SwipeTableViewController{
         super.viewDidLoad()
         tableView.rowHeight = 65.0
         tableView.separatorStyle = .none
-        //print(File Manager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
     //MARK: - Tableview Datasource Methods
@@ -37,14 +36,11 @@ class TodoListViewController: SwipeTableViewController{
     
     //each item will load only one time at the begining
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: .default, reuseIdentifier: "toDoListCell")
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         if let item = todoLtems?[indexPath.row] {
             cell.textLabel?.text = item.title
-            //ternary operator
             cell.accessoryType = item.done ? .checkmark : .none
-            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoLtems!.count)) {
+            if let color = UIColor(hexString: selectedCategory!.color)?.lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(todoLtems!.count)) {
                 cell.backgroundColor = color
                 cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
             }
@@ -127,7 +123,7 @@ class TodoListViewController: SwipeTableViewController{
 
     
     func loadItems() {
-        todoLtems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        todoLtems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: true)
         self.tableView.reloadData()
     }
 }
