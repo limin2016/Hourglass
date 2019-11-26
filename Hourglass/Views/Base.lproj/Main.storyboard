@@ -160,7 +160,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXU-Po-LM7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-778" y="854"/>
+            <point key="canvasLocation" x="-914" y="951"/>
         </scene>
         <!--Read-->
         <scene sceneID="cpc-hh-wrv">
@@ -309,22 +309,7 @@
             </objects>
             <point key="canvasLocation" x="3663.1999999999998" y="1200.7389162561576"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="egE-PY-nAg">
-            <objects>
-                <viewController id="9Xd-YG-sFm" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RgW-n2-J5D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="cQs-4B-19e"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="phs-Rs-4S0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3470" y="1982"/>
-        </scene>
-        <!--Timer View Controller-->
+        <!--Timer-->
         <scene sceneID="ew3-0S-RQC">
             <objects>
                 <viewController id="mLb-2s-D6d" customClass="TimerViewController" customModule="Hourglass" customModuleProvider="target" sceneMemberID="viewController">
@@ -453,7 +438,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ucC-3l-jCn"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xKp-fM-0Jz"/>
+                    <navigationItem key="navigationItem" title="Timer" id="xKp-fM-0Jz"/>
                     <connections>
                         <outlet property="hoursPickerView" destination="Fon-cw-MDC" id="ug7-8B-9eE"/>
                         <outlet property="minutesPickerView" destination="kJX-4Y-MIb" id="ZWQ-5x-LPh"/>
@@ -478,6 +463,9 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -557,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3d-bO-Mmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4202" y="-166"/>
+            <point key="canvasLocation" x="-4734" y="279"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="QWc-VE-ZSO">
