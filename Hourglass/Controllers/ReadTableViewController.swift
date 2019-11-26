@@ -26,6 +26,10 @@ class ReadListViewController: SwipeTableViewController{
         loadItems()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     //MARK: - Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return PaperRead?.count ?? 1
@@ -148,8 +152,17 @@ class ReadListViewController: SwipeTableViewController{
 
 extension ReadListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        PaperRead = PaperRead?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
-        self.tableView.reloadData()
+        if searchBar.text?.count == 0 {
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+        else {
+            PaperRead = PaperRead?.filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+            self.tableView.reloadData()
+        }
+        
         
     }
     
