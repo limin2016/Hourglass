@@ -13,13 +13,15 @@ import RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //print(Realm.Configuration.defaultConfiguration.fileURL)
+        //Theme.configureAppearance()
         
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         return true
     }
 
@@ -79,6 +81,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+
+        if notification.category == Alarm.alarmCategory {
+            let alarmAlert = UIAlertController(title: "Alarm!", message: nil, preferredStyle: .alert)
+            alarmAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+            window?.rootViewController?.present(alarmAlert, animated: true, completion: nil)
+            Alarm.alarmComplete()
         }
     }
 
