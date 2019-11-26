@@ -215,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="2110" y="1577"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Sources-->
         <scene sceneID="Xrt-z6-the">
             <objects>
                 <viewController id="7Ak-kI-hnj" customClass="ViewController" customModule="Hourglass" customModuleProvider="target" sceneMemberID="viewController">
@@ -300,7 +300,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tKy-hF-KT6"/>
                     </view>
-                    <navigationItem key="navigationItem" id="U8b-MR-dNG"/>
+                    <navigationItem key="navigationItem" title="Search Sources" id="U8b-MR-dNG"/>
                     <connections>
                         <outlet property="searchTextField" destination="ZE8-Pj-23V" id="n64-7s-VgO"/>
                     </connections>

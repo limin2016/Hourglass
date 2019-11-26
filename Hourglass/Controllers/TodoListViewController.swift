@@ -15,6 +15,7 @@ import ChameleonFramework
 //tableView.reloadData(): one time numberOfRowsInSection + number times cellForRowAt indexPath
 class TodoListViewController: SwipeTableViewController{
     
+    var TitleText = UILabel()
     let realm = try! Realm()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var todoLtems : Results<Item>?
@@ -26,7 +27,7 @@ class TodoListViewController: SwipeTableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 65.0
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
     }
     
     //MARK: - Tableview Datasource Methods
@@ -40,6 +41,7 @@ class TodoListViewController: SwipeTableViewController{
         if let item = todoLtems?[indexPath.row] {
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
+            // if you want to add color, remove the comment below
             if let color = UIColor(hexString: selectedCategory!.color)?.lighten(byPercentage: CGFloat(indexPath.row) / CGFloat(todoLtems!.count)) {
                 cell.backgroundColor = color
                 cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
@@ -123,6 +125,8 @@ class TodoListViewController: SwipeTableViewController{
         
         func loadItems() {
             todoLtems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: true)
+            self.navigationItem.title = self.selectedCategory?.name
+            //self.TitleText.text = self.selectedCategory?.name
             self.tableView.reloadData()
         }
     }
