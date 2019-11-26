@@ -84,49 +84,49 @@ class TodoListViewController: SwipeTableViewController{
         }
     }
     
-    //MARK: - add new item
+     //MARK: - add new item
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
         var textField = UITextField()
-        let alert = UIAlertController(title: "Add New Todo Item", message: "", preferredStyle: .alert)
-        //when you click "Add Item", what happens
-        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            if textField.text != "" {
-                if let currentCategory = self.selectedCategory {
-                    do {
-                        try self.realm.write {
-                            let newItem = Item()
-                            newItem.title = textField.text!
-                            newItem.done = false
-                            newItem.dateCreated = Date()
-                            currentCategory.items.append(newItem)
+            let alert = UIAlertController(title: "Add New Todo Item", message: "", preferredStyle: .alert)
+            //when you click "Add Item", what happens
+            let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+                if textField.text != "" {
+                    if let currentCategory = self.selectedCategory {
+                        do {
+                            try self.realm.write {
+                                let newItem = Item()
+                                newItem.title = textField.text!
+                                newItem.done = false
+                                newItem.dateCreated = Date()
+                                currentCategory.items.append(newItem)
+                            }
+                        } catch {
+                            print("Error saving new items!, \(error)")
                         }
-                    } catch {
-                        print("Error saving new items!, \(error)")
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
                 }
+                
             }
             
-        }
-        
-        //when you click the + button, what happens
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "create a new todo item"
-            textField = alertTextField
+            //when you click the + button, what happens
+            alert.addTextField { (alertTextField) in
+                alertTextField.placeholder = "create a new todo item"
+                textField = alertTextField
+                
+            }
             
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
-        
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
 
-    
-    func loadItems() {
-        todoLtems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: true)
-        self.tableView.reloadData()
+        
+        func loadItems() {
+            todoLtems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: true)
+            self.tableView.reloadData()
+        }
     }
-}
+   
 
 extension TodoListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

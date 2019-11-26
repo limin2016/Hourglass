@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F815228238C6E9C009D4744 /* ReadTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F815227238C6E9C009D4744 /* ReadTableViewController.swift */; };
+		2F81522A238C6F1C009D4744 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F815229238C6F1C009D4744 /* Paper.swift */; };
+		2F81522C238C8022009D4744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81522B238C8021009D4744 /* ViewController.swift */; };
 		2FB6318E238A02020035E844 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6318D238A02020035E844 /* CategoryTableViewController.swift */; };
 		2FB63192238B3BC40035E844 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB63191238B3BC40035E844 /* Item.swift */; };
 		2FB63194238B3BDA0035E844 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB63193238B3BDA0035E844 /* Category.swift */; };
@@ -45,6 +48,9 @@
 		1515497D9CA4392B686C0DFB /* Pods-Hourglass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hourglass.debug.xcconfig"; path = "Target Support Files/Pods-Hourglass/Pods-Hourglass.debug.xcconfig"; sourceTree = "<group>"; };
 		279EF9F72A166DF4690119DE /* Pods-HourglassTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HourglassTests.release.xcconfig"; path = "Target Support Files/Pods-HourglassTests/Pods-HourglassTests.release.xcconfig"; sourceTree = "<group>"; };
 		282DAA49491E9132A56D2580 /* Pods_Hourglass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hourglass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F815227238C6E9C009D4744 /* ReadTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTableViewController.swift; sourceTree = "<group>"; };
+		2F815229238C6F1C009D4744 /* Paper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paper.swift; sourceTree = "<group>"; };
+		2F81522B238C8021009D4744 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../../testSafariServices/testSafariServices/ViewController.swift; sourceTree = "<group>"; };
 		2FB6318D238A02020035E844 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		2FB63191238B3BC40035E844 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2FB63193238B3BDA0035E844 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -103,8 +109,10 @@
 			isa = PBXGroup;
 			children = (
 				2FB6318D238A02020035E844 /* CategoryTableViewController.swift */,
+				2F81522B238C8021009D4744 /* ViewController.swift */,
 				2FC25488234E65660068B012 /* TodoListViewController.swift */,
 				2FB63195238B96770035E844 /* SwipeTableViewController.swift */,
+				2F815227238C6E9C009D4744 /* ReadTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +130,7 @@
 			children = (
 				2FB63191238B3BC40035E844 /* Item.swift */,
 				2FB63193238B3BDA0035E844 /* Category.swift */,
+				2F815229238C6F1C009D4744 /* Paper.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -451,10 +460,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F81522C238C8022009D4744 /* ViewController.swift in Sources */,
 				2FC25489234E65660068B012 /* TodoListViewController.swift in Sources */,
 				2FB6318E238A02020035E844 /* CategoryTableViewController.swift in Sources */,
 				2FC25485234E65660068B012 /* AppDelegate.swift in Sources */,
+				2F815228238C6E9C009D4744 /* ReadTableViewController.swift in Sources */,
 				2FB63196238B96770035E844 /* SwipeTableViewController.swift in Sources */,
+				2F81522A238C6F1C009D4744 /* Paper.swift in Sources */,
 				2FB63192238B3BC40035E844 /* Item.swift in Sources */,
 				2FC25487234E65660068B012 /* SceneDelegate.swift in Sources */,
 				2FB63194238B3BDA0035E844 /* Category.swift in Sources */,
