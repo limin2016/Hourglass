@@ -16,4 +16,7 @@ target 'Hourglass' do
 pod 'RealmSwift'
 pod 'SwipeCellKit'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+pod 'CLTypingLabel', '~> 0.4.0'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
 end

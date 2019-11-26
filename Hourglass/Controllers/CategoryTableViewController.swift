@@ -19,6 +19,7 @@ class CategoryTableViewController: SwipeTableViewController {
     var categories : Results<Category>!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationController?.isNavigationBarHidden = true
         loadCategories()
         tableView.rowHeight = 65.0
         tableView.separatorStyle = .none
